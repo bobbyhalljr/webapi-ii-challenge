@@ -9,7 +9,7 @@ const App = () => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    axios.get('/api/posts')
+    axios.get('http://localhost:4000/api/posts')
     .then(res => {
       console.log(res.data)
     })
