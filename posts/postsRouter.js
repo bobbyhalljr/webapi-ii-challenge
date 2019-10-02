@@ -60,12 +60,13 @@ router.get('/:id/comments', (req, res) => {
     })
 })
 
-// POST
+// POST BY ID
 router.post('/', (req, res) => {
-    const id = req.params.id;
+    // const id = req.params.id;
     posts.insert(req.body)
     .then(post => {
         if(req.body.title || req.body.contents){
+            // posts.insert(req.body)
             res.status(201).json(post)
         } else if(!req.body.title || !req.body.contents){
             res.status(400).json({
