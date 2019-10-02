@@ -7,12 +7,11 @@ import '../App.css';
 // const posts = useContext(PostsContext);
 // console.log(posts)
 
-const Posts = ({ posts, setPosts }) => {
-    console.log(posts)
+const Posts = ({ posts, setPosts, deletePosts }) => {
     return (
         <div>
         {posts.map(post => {
-             return (
+            return (
             <>
                 <div className='posts'>
                     <div className='post'>
@@ -21,7 +20,7 @@ const Posts = ({ posts, setPosts }) => {
                     </div>
                     <div className='btn-container'>
                         <button className='btn btn-edit'>Edit</button>
-                        <button className='btn btn-delete'>Delete</button>
+                        <button onClick={() => deletePosts(post.id)} className='btn btn-delete'>Delete</button>
                     </div>
                 </div>
                 <hr color='#333' height='1px' />

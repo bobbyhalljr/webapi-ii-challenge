@@ -5,6 +5,7 @@ import './App.css';
 
 import { PostsContext } from './contexts/PostsContext';
 import Posts from './components/Posts';
+import Form from './components/Form';
 
 const App = () => {
   const [posts, setPosts] = useState([])
@@ -18,6 +19,14 @@ const App = () => {
     .catch(err => console.log(err.response))
   }
 
+  const deletePosts = (id) => {
+    axios.delete(`http://localhost:4000/posts/${id}`)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => console.log(err.response))
+  }
+
   useEffect(() => {
     getPosts();
   }, [])
@@ -26,7 +35,8 @@ const App = () => {
     <PostsContext.Provider state={{ posts, setPosts, getPosts }}>
       <div className="App">
         <h1>Welcome to Bobby's Blog</h1>
-        <Posts posts={posts} setPosts={setPosts} />
+        {/* <Form posts={posts} setPosts={setPosts} /> */}
+        <Posts posts={posts} setPosts={setPosts} deletePosts={deletePosts} />
       </div>
     </PostsContext.Provider>
   );
